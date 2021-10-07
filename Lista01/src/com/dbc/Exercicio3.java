@@ -14,7 +14,7 @@ public class Exercicio3 {
         scanner.nextLine();
         float troco = valor2 - valor1;
         if (troco < 0) {
-            System.out.println("O valor pago deve ser maior ou igual ao valor consumido.");
+            System.err.println("O valor pago deve ser maior ou igual ao valor consumido.");
         } else {
             System.out.println(String.format("O cliente deve receber R$%.2f de troco.", troco));
         }
