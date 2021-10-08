@@ -11,7 +11,8 @@ public class Exercicio6 {
         int inserido = scanner.nextInt();
         for (int i = 0; i < numeros.length; i++){
             if (inserido == numeros[i]){
-                System.out.printf("Número encontrado no vetor! %n");
+                System.out.printf("Número encontrado na posição %d do vetor. %n", i);
+                break;
             }else{
                 System.err.printf("Número não encontrado no vetor! %n");
             }
