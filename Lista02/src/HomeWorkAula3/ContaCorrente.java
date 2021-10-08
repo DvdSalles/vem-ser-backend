@@ -14,12 +14,14 @@ public class ContaCorrente {
         System.out.println("Saldo: "+this.saldo);
         System.out.println("Cheque Especial: "+this.chequeEspecial);
     }
-    void depositar(double valorDeposito){
+    boolean depositar(double valorDeposito){
         if(valorDeposito <= 0){
             System.err.println("Depósito inválido!");
+            return false;
         }else{
             this.saldo = this.saldo + valorDeposito;
             System.out.println("Novo saldo: R$"+this.saldo);
+            return true;
         }
     }
     boolean sacar(double valorSaque){

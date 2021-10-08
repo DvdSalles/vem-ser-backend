@@ -3,8 +3,8 @@ package HomeWorkAula3;
 public class Cliente {
     String nome;
     String cpf;
-    String[] contatos = new String[2];
-    String[] enderecos = new String[2];
+    Contato[] contatos = new Contato[2];
+    Endereco[] enderecos = new Endereco[2];
 
 
     void imprimirContatos(){
