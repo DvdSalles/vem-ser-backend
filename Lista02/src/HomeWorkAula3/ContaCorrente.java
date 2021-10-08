@@ -15,8 +15,12 @@ public class ContaCorrente {
         System.out.println("Cheque Especial: "+this.chequeEspecial);
     }
     void depositar(double valorDeposito){
-        this.saldo = this.saldo + valorDeposito;
-        System.out.println("Novo saldo: R$"+this.saldo);
+        if(valorDeposito <= 0){
+            System.err.println("Depósito inválido!");
+        }else{
+            this.saldo = this.saldo + valorDeposito;
+            System.out.println("Novo saldo: R$"+this.saldo);
+        }
     }
     boolean sacar(double valorSaque){
         if(valorSaque <= (this.saldo + this.chequeEspecial)){

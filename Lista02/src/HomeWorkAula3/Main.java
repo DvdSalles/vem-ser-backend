@@ -47,14 +47,18 @@ public class Main {
 //        }else{
 //            System.out.println("Não tem!");
 //        }
+//        ContaCorrente conta1 = new ContaCorrente();
+//        conta1.depositar(-200);
+//        if(conta1.sacar(150)){
+//            System.out.println("Sacou!");
+//        }else{
+//            System.out.println("Não tem!");
+//        }
+//        System.out.println(conta1.retornaSaldoComChequeEspecial());
         ContaCorrente conta1 = new ContaCorrente();
-        conta1.depositar(100);
-        if(conta1.sacar(150)){
-            System.out.println("Sacou!");
-        }else{
-            System.out.println("Não tem!");
-        }
-        System.out.println(conta1.retornaSaldoComChequeEspecial());
+        conta1.depositar(200);
+        System.out.println("Saldo mais cheque especial: R$"+conta1.retornaSaldoComChequeEspecial());
+
 
     }
 }
