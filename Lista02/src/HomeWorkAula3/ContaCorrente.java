@@ -5,24 +5,42 @@ public class ContaCorrente {
     String numeroConta;
     int agencia;
     double saldo;
-    double chequeEspecial;
-    double saldoTotal = saldo + chequeEspecial;
+    double chequeEspecial = 100;
 
     void imprimirContaCorrente(){
         System.out.println(this.cliente+"------- conta: "+this.numeroConta);
+    }
+    void imprimirSaldoTotal(){
+        System.out.println("Saldo: "+this.saldo);
+        System.out.println("Cheque Especial: "+this.chequeEspecial);
     }
     void depositar(double valorDeposito){
         this.saldo = this.saldo + valorDeposito;
         System.out.println("Novo saldo: R$"+this.saldo);
     }
-    void sacar(double valorSaque){
-        if(valorSaque <= this.saldoTotal){
-            this.saldoTotal = this.saldoTotal - valorSaque;
+    boolean sacar(double valorSaque){
+        if(valorSaque <= (this.saldo + this.chequeEspecial)){
+            if(valorSaque <= this.saldo){
+                this.saldo = this.saldo - valorSaque;
+            }else{
+                valorSaque = valorSaque - this.saldo;
+                this.saldo = 0;
+                this.chequeEspecial = this.chequeEspecial - valorSaque;
+            }
+            return true;
         }else{
-            System.err.println("Saldo insuficiente!");
+            return false;
         }
     }
-    double retornarSaldoTotal(){
-        return this.saldoTotal;
+    double retornaSaldoComChequeEspecial(){
+        return this.saldo + this.chequeEspecial;
+    }
+    boolean transferir(double valor,ContaCorrente conta){
+        if(this.sacar(valor)){
+            conta.depositar(valor);
+            return true;
+        }else{
+            return false;
+        }
     }
 }
