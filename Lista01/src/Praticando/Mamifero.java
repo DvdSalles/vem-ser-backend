@@ -1,10 +1,18 @@
 package Praticando;
 
 public class Mamifero {
-    int peso;
+    private double peso;
     public Mamifero(){
     }
-    public Mamifero(int valorPeso){
+    public Mamifero(double valorPeso){
         this.peso = valorPeso;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
     }
 }

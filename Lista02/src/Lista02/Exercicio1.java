@@ -14,10 +14,10 @@ class Exercecio1 {
         System.out.printf("Digite o preço do produto: %n");
         double preco = scanner.nextDouble();
 
-        for(int i = 0; i < 10; i++){
+        for(int i = 1; i <= 10; i++){
             double valor = preco * desconto;
-            double total = valor * (i+1);
-            System.out.printf("%d X R$%.2f = R$%.2f %n", i+1, valor, total);
+            double total = valor * i;
+            System.out.printf("%d x R$%.2f = R$%.2f %n", i, valor, total);
             desconto -= 0.05;
         }
     }
