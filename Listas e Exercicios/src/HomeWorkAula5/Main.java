@@ -85,14 +85,15 @@ public class Main {
         c2ContaPoupanca.setAgencia("123");
         c2ContaPoupanca.setSaldo(2000.0);
 
-        c2ContaPoupanca.sacar(100.0);
-        c2ContaPoupanca.transferir(c1ContaCorrente, 300.0);
-        c1ContaCorrente.transferir(c2ContaPoupanca, 50.0);
-        c1ContaPagamento.sacar(125.0);
-        c2ContaPoupanca.creditarTaxa();
-        c1ContaCorrente.imprimir();
-        c1ContaPagamento.imprimir();
-        c2ContaPoupanca.imprimir();
+//        c2ContaPoupanca.sacar(100.0);
+//        c2ContaPoupanca.transferir(c1ContaCorrente, 300.0);
+//        c1ContaCorrente.transferir(c2ContaPoupanca, 50.0);
+//        c1ContaPagamento.sacar(125.0);
+//        c2ContaPoupanca.creditarTaxa();
+//        c1ContaCorrente.imprimir();
+//        c1ContaPagamento.imprimir();
+//        c2ContaPoupanca.imprimir();
+//        c1ContaCorrente.depositar(100.0);
 
 
     }

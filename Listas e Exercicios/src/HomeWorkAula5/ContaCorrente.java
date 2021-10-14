@@ -1,5 +1,7 @@
 package HomeWorkAula5;
 
+import java.sql.SQLOutput;
+
 public class ContaCorrente extends Conta implements Impressao{
     private Double chequeEspecial = 200.0;
 
@@ -7,9 +9,17 @@ public class ContaCorrente extends Conta implements Impressao{
         this.chequeEspecial = chequeEspecial;
     }
 
-    public Double retornarChequeEspecial(){
-        return this.getSaldo() + this.chequeEspecial;
+    public Double getChequeEspecial() {
+        return chequeEspecial;
     }
+
+
+    public Double retornarSaldoComChequeEspecial(){
+
+        return this.getSaldo() + this.getChequeEspecial();
+    }
+
+
 
     @Override
     public Boolean sacar(Double valorSaque){
@@ -30,14 +40,14 @@ public class ContaCorrente extends Conta implements Impressao{
             return false;
         }else{
             this.setSaldo(this.getSaldo()+valorDeposito);
-            System.out.println("Novo saldo: R$"+this.getSaldo());
+            System.out.println("Novo saldo: R$"+this.retornarSaldoComChequeEspecial());
             return true;
         }
     }
 
     @Override
     public void imprimir () {
-        System.out.println("Saldo atual: R$"+this.getSaldo());
+        System.out.println("Saldo atual: R$"+this.retornarSaldoComChequeEspecial());
     }
 
     @Override
@@ -49,4 +59,5 @@ public class ContaCorrente extends Conta implements Impressao{
             return false;
         }
     }
+
 }
