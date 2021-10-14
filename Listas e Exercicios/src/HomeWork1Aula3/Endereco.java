@@ -1,4 +1,4 @@
-package HomeWorkAula3;
+package HomeWork1Aula3;
 
 public class Endereco {
     int tipo;

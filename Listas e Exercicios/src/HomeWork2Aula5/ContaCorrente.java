@@ -1,6 +1,4 @@
-package HomeWorkAula5;
-
-import java.sql.SQLOutput;
+package HomeWork2Aula5;
 
 public class ContaCorrente extends Conta implements Impressao{
     private Double chequeEspecial = 200.0;

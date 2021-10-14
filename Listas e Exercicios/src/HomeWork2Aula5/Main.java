@@ -1,4 +1,4 @@
-package HomeWorkAula5;
+package HomeWork2Aula5;
 
 public class Main {
     public static void main(String[] args) {
@@ -94,6 +94,10 @@ public class Main {
 //        c1ContaPagamento.imprimir();
 //        c2ContaPoupanca.imprimir();
 //        c1ContaCorrente.depositar(100.0);
+//        c2ContaPoupanca.transferir(c1ContaCorrente, 50.0);
+//        c2ContaPoupanca.imprimir();
+        c1ContaPagamento.transferir(c2ContaPoupanca,50.0);
+        c1ContaPagamento.imprimir();
 
 
     }

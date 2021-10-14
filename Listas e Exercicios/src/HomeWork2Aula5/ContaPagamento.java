@@ -1,4 +1,4 @@
-package HomeWorkAula5;
+package HomeWork2Aula5;
 
 public class ContaPagamento extends Conta implements Impressao{
     static final Double TAXA_SAQUE = 4.25;
@@ -6,7 +6,7 @@ public class ContaPagamento extends Conta implements Impressao{
     @Override
     public Boolean sacar(Double valorSaque) {
         if (valorSaque+TAXA_SAQUE <= this.getSaldo()) {
-            this.setSaldo(this.getSaldo() - valorSaque);
+            this.setSaldo(this.getSaldo() - (valorSaque+TAXA_SAQUE));
             System.out.println("Saque efetuado com sucesso!");
             return true;
         } else {
@@ -29,7 +29,7 @@ public class ContaPagamento extends Conta implements Impressao{
 
     @Override
     public Boolean transferir(Conta conta, Double valor) {
-        if (this.sacar(valor)) {
+        if (this.sacar((valor-TAXA_SAQUE))) {
             conta.depositar(valor);
             return true;
         } else {

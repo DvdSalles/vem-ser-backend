@@ -1,4 +1,4 @@
-package HomeWorkAula5;
+package HomeWork2Aula5;
 
 public class Endereco {
     private Integer tipo; //1 - residencial 2- comercial

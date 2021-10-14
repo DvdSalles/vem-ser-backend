@@ -1,4 +1,4 @@
-package HomeWorkAula5;
+package HomeWork2Aula5;
 
 public class ContaPoupanca extends Conta implements Impressao {
     static final Double JUROS_MENSAL = 1.01;
