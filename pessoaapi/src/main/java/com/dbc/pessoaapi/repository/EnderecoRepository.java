@@ -2,6 +2,7 @@ package com.dbc.pessoaapi.repository;
 
 import com.dbc.pessoaapi.entity.Endereco;
 import com.dbc.pessoaapi.entity.TipoEndereco;
+import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -29,11 +30,11 @@ public class EnderecoRepository {
                 .collect(Collectors.toList());
     }
 
-    public Endereco listEnderecoPorId(Integer idEndereco) throws Exception {
+    public Endereco listEnderecoPorId(Integer idEndereco) throws RegraDeNegocioException {
         Endereco enderecoRecuperado = listaEndereco.stream()
                 .filter(endereco -> endereco.getIdEndereco().equals(idEndereco))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Endereço não encontrado!"));
+                .orElseThrow(() -> new RegraDeNegocioException("Endereço não encontrado!"));
         return enderecoRecuperado;
     }
 
@@ -43,11 +44,11 @@ public class EnderecoRepository {
         return endereco;
     }
 
-    public Endereco update(Integer id, Endereco enderecoAtualizar) throws Exception {
+    public Endereco update(Integer id, Endereco enderecoAtualizar) throws RegraDeNegocioException {
         Endereco enderecoRecuperado = listaEndereco.stream()
                 .filter(endereco -> endereco.getIdEndereco().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Endereço não encontrado!"));
+                .orElseThrow(() -> new RegraDeNegocioException("Endereço não encontrado!"));
         enderecoRecuperado.setIdPessoa(enderecoAtualizar.getIdPessoa());
         enderecoRecuperado.setTipo(enderecoAtualizar.getTipo());
         enderecoRecuperado.setLogradouro(enderecoAtualizar.getLogradouro());
@@ -60,11 +61,11 @@ public class EnderecoRepository {
         return enderecoRecuperado;
     }
 
-    public void delete(Integer idEndereco) throws Exception{
+    public void delete(Integer idEndereco) throws RegraDeNegocioException {
         Endereco enderecoRecuperado = listaEndereco.stream()
                 .filter(endereco -> endereco.getIdEndereco().equals(idEndereco))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Endereço não encontrado!"));
+                .orElseThrow(() -> new RegraDeNegocioException("Endereço não encontrado!"));
         listaEndereco.remove(enderecoRecuperado);
     }
 }

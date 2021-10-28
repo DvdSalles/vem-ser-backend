@@ -1,6 +1,7 @@
 package com.dbc.pessoaapi.service;
 
 import com.dbc.pessoaapi.entity.Pessoa;
+import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.PessoaRepository;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -17,14 +18,14 @@ public class PessoaService {
     private PessoaRepository pessoaRepository;
 
 
-    public Pessoa create(Pessoa pessoa) throws Exception {
-        if(StringUtils.isBlank(pessoa.getNome())) {
-            throw new Exception("Nome não informado!");
-        } else if(ObjectUtils.isEmpty(pessoa.getDataNascimento())) {
-            throw new Exception("Data de nascimento não informada!");
-        }else if(StringUtils.isBlank(pessoa.getCpf()) || StringUtils.length(pessoa.getCpf()) != 11) {
-            throw new Exception("CPF não inserido corretamente.");
-        }
+    public Pessoa create(Pessoa pessoa) throws RegraDeNegocioException {
+//        if(StringUtils.isBlank(pessoa.getNome())) {
+//            throw new Exception("Nome não informado!");
+//        } else if(ObjectUtils.isEmpty(pessoa.getDataNascimento())) {
+//            throw new Exception("Data de nascimento não informada!");
+//        }else if(StringUtils.isBlank(pessoa.getCpf()) || StringUtils.length(pessoa.getCpf()) != 11) {
+//            throw new Exception("CPF não inserido corretamente.");
+//        }
         return pessoaRepository.create(pessoa);
     }
 
@@ -33,18 +34,18 @@ public class PessoaService {
     }
 
     public Pessoa update(Integer id,
-                         Pessoa pessoaAtualizar) throws Exception {
-        if(StringUtils.isBlank(pessoaAtualizar.getNome())) {
-            throw new Exception("Nome não informado!");
-        } else if(ObjectUtils.isEmpty(pessoaAtualizar.getDataNascimento())) {
-            throw new Exception("Data de nascimento não informada!");
-        }else if(StringUtils.isBlank(pessoaAtualizar.getCpf()) || StringUtils.length(pessoaAtualizar.getCpf()) != 11) {
-            throw new Exception("CPF não inserido corretamente.");
-        }
+                         Pessoa pessoaAtualizar) throws RegraDeNegocioException {
+//        if(StringUtils.isBlank(pessoaAtualizar.getNome())) {
+//            throw new RegraDeNegocioException("Nome não informado!");
+//        } else if(ObjectUtils.isEmpty(pessoaAtualizar.getDataNascimento())) {
+//            throw new RegraDeNegocioException("Data de nascimento não informada!");
+//        }else if(StringUtils.isBlank(pessoaAtualizar.getCpf()) || StringUtils.length(pessoaAtualizar.getCpf()) != 11) {
+//            throw new RegraDeNegocioException("CPF não inserido corretamente.");
+//        }
         return pessoaRepository.update(id, pessoaAtualizar);
     }
 
-    public void delete(Integer id) throws Exception {
+    public void delete(Integer id) throws RegraDeNegocioException {
         pessoaRepository.delete(id);
     }
 

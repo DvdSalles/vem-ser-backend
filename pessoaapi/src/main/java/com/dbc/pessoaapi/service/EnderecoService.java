@@ -1,7 +1,9 @@
 package com.dbc.pessoaapi.service;
 
 import com.dbc.pessoaapi.entity.Endereco;
+import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.EnderecoRepository;
+import com.dbc.pessoaapi.repository.PessoaRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import java.util.List;
 public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
+    @Autowired
+    private PessoaRepository pessoaRepository;
 
     public List<Endereco> list() {
         return enderecoRepository.list();
@@ -21,34 +25,21 @@ public class EnderecoService {
         return enderecoRepository.listEnderecoPorPessoa(idPessoa);
     }
 
-    public Endereco listEnderecoPorId(Integer idEndereco) throws Exception {
+    public Endereco listEnderecoPorId(Integer idEndereco) throws RegraDeNegocioException {
         return enderecoRepository.listEnderecoPorId(idEndereco);
     }
 
-    public Endereco create(Integer idPessoa, Endereco endereco) throws Exception {
-        if(StringUtils.isBlank(endereco.getLogradouro())) {
-            throw new Exception("Logradouro não informado.");
-        } else if (StringUtils.isBlank(endereco.getCidade())) {
-            throw new Exception("Cidade não informada.");
-        } else if (StringUtils.isBlank(endereco.getCep()) || StringUtils.length(endereco.getCep()) != 8) {
-            throw new Exception("CEP não inserido ou Faltando digitos.");
-        }
+    public Endereco create(Integer idPessoa, Endereco endereco) throws RegraDeNegocioException {
+        pessoaRepository.buscarPorId(idPessoa);
         endereco.setIdPessoa(idPessoa);
         return enderecoRepository.create(endereco);
     }
 
-    public Endereco update(Integer idEndereco, Endereco enderecoAtualizar) throws Exception {
-        if(StringUtils.isBlank(enderecoAtualizar.getLogradouro())) {
-            throw new Exception("Logradouro não informado.");
-        } else if (StringUtils.isBlank(enderecoAtualizar.getCidade())) {
-            throw new Exception("Cidade não informada.");
-        } else if (StringUtils.isBlank(enderecoAtualizar.getCep()) || StringUtils.length(enderecoAtualizar.getCep()) != 8) {
-            throw new Exception("CEP não inserido ou Faltando digitos.");
-        }
+    public Endereco update(Integer idEndereco, Endereco enderecoAtualizar) throws RegraDeNegocioException {
         return enderecoRepository.update(idEndereco, enderecoAtualizar);
     }
 
-    public void delete(Integer idEndereco) throws Exception {
+    public void delete(Integer idEndereco) throws RegraDeNegocioException {
         enderecoRepository.delete(idEndereco);
     }
 }
