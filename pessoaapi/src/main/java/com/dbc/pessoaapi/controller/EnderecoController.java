@@ -31,7 +31,7 @@ public class EnderecoController {
 
     @PostMapping("/{idPessoa}")
     public Endereco create(@PathVariable("idPessoa") Integer idPessoa,
-                           @RequestBody Endereco endereco) {
+                           @RequestBody Endereco endereco) throws Exception {
         return enderecoService.create(idPessoa, endereco);
     }
 

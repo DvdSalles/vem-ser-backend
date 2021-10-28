@@ -34,6 +34,13 @@ public class PessoaService {
 
     public Pessoa update(Integer id,
                          Pessoa pessoaAtualizar) throws Exception {
+        if(StringUtils.isBlank(pessoaAtualizar.getNome())) {
+            throw new Exception("Nome não informado!");
+        } else if(ObjectUtils.isEmpty(pessoaAtualizar.getDataNascimento())) {
+            throw new Exception("Data de nascimento não informada!");
+        }else if(StringUtils.isBlank(pessoaAtualizar.getCpf()) || StringUtils.length(pessoaAtualizar.getCpf()) != 11) {
+            throw new Exception("CPF não inserido corretamente.");
+        }
         return pessoaRepository.update(id, pessoaAtualizar);
     }
 
