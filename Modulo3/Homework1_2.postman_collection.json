@@ -11,12 +11,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://my-application-teste.herokuapp.com/pessoa",
-					"protocol": "https",
+					"raw": "{{url}}/pessoa",
 					"host": [
-						"my-application-teste",
-						"herokuapp",
-						"com"
+						"{{url}}"
 					],
 					"path": [
 						"pessoa"
@@ -32,7 +29,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"nome\": \"Walter White\",\r\n        \"dataNascimento\": \"1958-09-07\",\r\n        \"cpf\": \"19881521661\"\r\n}",
+					"raw": "{\r\n        \"nome\": \"Walter White\",\r\n        \"dataNascimento\": \"1958-09-07\",\r\n        \"cpf\": \"99999999999\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -40,12 +37,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://my-application-teste.herokuapp.com/pessoa",
-					"protocol": "https",
+					"raw": "{{url}}/pessoa",
 					"host": [
-						"my-application-teste",
-						"herokuapp",
-						"com"
+						"{{url}}"
 					],
 					"path": [
 						"pessoa"
@@ -69,16 +63,13 @@
 					}
 				},
 				"url": {
-					"raw": "https://my-application-teste.herokuapp.com/pessoa/10",
-					"protocol": "https",
+					"raw": "{{url}}/pessoa/4",
 					"host": [
-						"my-application-teste",
-						"herokuapp",
-						"com"
+						"{{url}}"
 					],
 					"path": [
 						"pessoa",
-						"10"
+						"4"
 					]
 				}
 			},
@@ -90,16 +81,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://my-application-teste.herokuapp.com/pessoa/9",
-					"protocol": "https",
+					"raw": "{{url}}/pessoa/1",
 					"host": [
-						"my-application-teste",
-						"herokuapp",
-						"com"
+						"{{url}}"
 					],
 					"path": [
 						"pessoa",
-						"9"
+						"1"
 					]
 				}
 			},
@@ -111,12 +99,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://my-application-teste.herokuapp.com/contato",
-					"protocol": "https",
+					"raw": "{{url}}/contato",
 					"host": [
-						"my-application-teste",
-						"herokuapp",
-						"com"
+						"{{url}}"
 					],
 					"path": [
 						"contato"
@@ -131,16 +116,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://my-application-teste.herokuapp.com/contato/10",
-					"protocol": "https",
+					"raw": "{{url}}/contato/2",
 					"host": [
-						"my-application-teste",
-						"herokuapp",
-						"com"
+						"{{url}}"
 					],
 					"path": [
 						"contato",
-						"10"
+						"2"
 					]
 				}
 			},
@@ -153,7 +135,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"tipoContato\": \"COMERCIAL\",\r\n        \"numero\": \"057651189612\",\r\n        \"descricao\": \"disk-blue-crystals\"\r\n}",
+					"raw": "{\r\n        \"tipoContato\": \"COMERCIAL\",\r\n        \"numero\": \"9999999999\",\r\n        \"descricao\": \"Funcionou!\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -161,16 +143,13 @@
 					}
 				},
 				"url": {
-					"raw": "https://my-application-teste.herokuapp.com/contato/10",
-					"protocol": "https",
+					"raw": "{{url}}/contato/2",
 					"host": [
-						"my-application-teste",
-						"herokuapp",
-						"com"
+						"{{url}}"
 					],
 					"path": [
 						"contato",
-						"10"
+						"2"
 					]
 				}
 			},
@@ -183,7 +162,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"tipoContato\": \"COMERCIAL\",\r\n        \"numero\": \"057651189612\",\r\n        \"descricao\": \"disk-blue-crystals-24hrs-ligue-já\"\r\n    }",
+					"raw": "    {\r\n        \"idPessoa\": 2,\r\n        \"tipoContato\": \"COMERCIAL\",\r\n        \"numero\": \"057651189612\",\r\n        \"descricao\": \"Funcionou!\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -191,16 +170,13 @@
 					}
 				},
 				"url": {
-					"raw": "https://my-application-teste.herokuapp.com/contato/17",
-					"protocol": "https",
+					"raw": "{{url}}/contato/1",
 					"host": [
-						"my-application-teste",
-						"herokuapp",
-						"com"
+						"{{url}}"
 					],
 					"path": [
 						"contato",
-						"17"
+						"1"
 					]
 				}
 			},
@@ -212,16 +188,139 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://my-application-teste.herokuapp.com/contato/17",
-					"protocol": "https",
+					"raw": "{{url}}/contato/1",
 					"host": [
-						"my-application-teste",
-						"herokuapp",
-						"com"
+						"{{url}}"
 					],
 					"path": [
 						"contato",
-						"17"
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /endereco",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/endereco",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"endereco"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /endereco/idEndereco",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/endereco/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"endereco",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /endereco/idPessoa/pessoa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/endereco/2/pessoa",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"endereco",
+						"2",
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /endereco/idPessoa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tipo\": \"RESIDENCIAL\",\r\n    \"logradouro\": \"Rua das Ruas\",\r\n    \"numero\": 70,\r\n    \"complemento\": \"Casa\",\r\n    \"cep\": \"72888888\",\r\n    \"cidade\": \"Patos de Minas\",\r\n    \"estado\": \"MG\",\r\n    \"pais\": \"Brasil\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/endereco/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"endereco",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /endereco/idEndereco",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idPessoa\": 1,\r\n    \"tipo\": \"RESIDENCIAL\",\r\n    \"logradouro\": \"Rua do Código Funcionando\",\r\n    \"numero\": 70,\r\n    \"complemento\": \"Casa\",\r\n    \"cep\": \"72888888\",\r\n    \"cidade\": \"Patos de Minas\",\r\n    \"estado\": \"MG\",\r\n    \"pais\": \"Brasil\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/endereco/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"endereco",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /endereco/idEndereco",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/endereco/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"endereco",
+						"1"
 					]
 				}
 			},

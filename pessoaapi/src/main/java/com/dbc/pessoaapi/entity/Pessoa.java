@@ -2,6 +2,7 @@ package com.dbc.pessoaapi.entity;
 
 import java.time.LocalDate;
 
+
 public class Pessoa {
     private Integer idPessoa;
     private String nome;
