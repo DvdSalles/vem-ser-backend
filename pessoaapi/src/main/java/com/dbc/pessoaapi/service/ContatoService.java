@@ -1,42 +1,57 @@
 package com.dbc.pessoaapi.service;
 
-import com.dbc.pessoaapi.entity.Contato;
-import com.dbc.pessoaapi.entity.Pessoa;
+import com.dbc.pessoaapi.dto.ContatoCreateDTO;
+import com.dbc.pessoaapi.dto.ContatoDTO;
+import com.dbc.pessoaapi.entity.ContatoEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.ContatoRepository;
 import com.dbc.pessoaapi.repository.PessoaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ContatoService {
-    @Autowired
-    private ContatoRepository contatoRepository;
-    @Autowired
-    private PessoaRepository pessoaRepository;
+    private final ContatoRepository contatoRepository;
+    private final PessoaRepository pessoaRepository;
+    private final ObjectMapper objectMapper;
 
 
-    public Contato create(Integer idPessoa, Contato contato) throws RegraDeNegocioException {
+    public ContatoDTO create(Integer idPessoa, ContatoCreateDTO contatoCreateDTO) throws RegraDeNegocioException {
         pessoaRepository.buscarPorId(idPessoa);
-        contato.setIdPessoa(idPessoa);
-        return contatoRepository.create(contato);
+        ContatoEntity contatoEntity = objectMapper.convertValue(contatoCreateDTO, ContatoEntity.class);
+        ContatoEntity contatoCriado = objectMapper.convertValue(contatoEntity, ContatoEntity.class);
+        contatoCriado.setIdPessoa(idPessoa);
+        contatoRepository.create(contatoCriado);
+        ContatoDTO contatoDTO = objectMapper.convertValue(contatoCriado, ContatoDTO.class);
+        return contatoDTO;
     }
 
-    public List<Contato> list(){
-        return contatoRepository.list();
+    public List<ContatoDTO> list(){
+        return contatoRepository.list().stream()
+                .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
+                .collect(Collectors.toList());
     }
 
-    public List<Contato> listPorIdPessoa(Integer idPessoa) {
-        return contatoRepository.listPorIdPessoa(idPessoa);
+    public List<ContatoDTO> listPorIdPessoa(Integer idPessoa) {
+        return contatoRepository.list().stream()
+                .filter(contatoEntity -> contatoEntity.getIdPessoa().equals(idPessoa))
+                .map(contatoEntity -> objectMapper.convertValue(contatoEntity, ContatoDTO.class))
+                .collect(Collectors.toList());
     }
 
-    public Contato update(Integer idContato, Contato contatoAtualizar) throws RegraDeNegocioException{
-        return contatoRepository.update(idContato, contatoAtualizar);
+    public ContatoDTO update(Integer idContato, ContatoCreateDTO contatoCreateDTOAtualizar) throws RegraDeNegocioException{
+        ContatoEntity contatoEntity = objectMapper.convertValue(contatoCreateDTOAtualizar, ContatoEntity.class);
+        ContatoEntity contatoEntityAtualizar = contatoRepository.update(idContato, contatoEntity);
+        ContatoDTO contatoDTO = objectMapper.convertValue(contatoEntityAtualizar, ContatoDTO.class);
+        return contatoDTO;
     }
 
-    public Contato delete(Integer idContato) throws RegraDeNegocioException{
-        return contatoRepository.delete(idContato);
+    public void delete(Integer idContato) throws RegraDeNegocioException{
+        contatoRepository.delete(idContato);
     }
 }

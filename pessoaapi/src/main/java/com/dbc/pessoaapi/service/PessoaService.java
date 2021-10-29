@@ -1,24 +1,25 @@
 package com.dbc.pessoaapi.service;
 
-import com.dbc.pessoaapi.entity.Pessoa;
+import com.dbc.pessoaapi.dto.PessoaCreateDTO;
+import com.dbc.pessoaapi.dto.PessoaDTO;
+import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.PessoaRepository;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class PessoaService {
-    @Autowired
-    private PessoaRepository pessoaRepository;
+    private final PessoaRepository pessoaRepository;
+    private final ObjectMapper objectMapper;
 
 
-    public Pessoa create(Pessoa pessoa) throws RegraDeNegocioException {
+    public PessoaDTO create(PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException {
 //        if(StringUtils.isBlank(pessoa.getNome())) {
 //            throw new Exception("Nome não informado!");
 //        } else if(ObjectUtils.isEmpty(pessoa.getDataNascimento())) {
@@ -26,15 +27,21 @@ public class PessoaService {
 //        }else if(StringUtils.isBlank(pessoa.getCpf()) || StringUtils.length(pessoa.getCpf()) != 11) {
 //            throw new Exception("CPF não inserido corretamente.");
 //        }
-        return pessoaRepository.create(pessoa);
+        PessoaEntity pessoaEntity = objectMapper.convertValue(pessoaCreateDTO, PessoaEntity.class);
+        PessoaEntity pessoaCriada = pessoaRepository.create(pessoaEntity);
+
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaCriada, PessoaDTO.class);
+        return pessoaDTO;
     }
 
-    public List<Pessoa> list(){
-        return pessoaRepository.list();
+    public List<PessoaDTO> list(){
+        return pessoaRepository.list().stream()
+                .map(pessoa -> objectMapper.convertValue(pessoa, PessoaDTO.class))
+                .collect(Collectors.toList());
     }
 
-    public Pessoa update(Integer id,
-                         Pessoa pessoaAtualizar) throws RegraDeNegocioException {
+    public PessoaDTO update(Integer id,
+                               PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException {
 //        if(StringUtils.isBlank(pessoaAtualizar.getNome())) {
 //            throw new RegraDeNegocioException("Nome não informado!");
 //        } else if(ObjectUtils.isEmpty(pessoaAtualizar.getDataNascimento())) {
@@ -42,14 +49,21 @@ public class PessoaService {
 //        }else if(StringUtils.isBlank(pessoaAtualizar.getCpf()) || StringUtils.length(pessoaAtualizar.getCpf()) != 11) {
 //            throw new RegraDeNegocioException("CPF não inserido corretamente.");
 //        }
-        return pessoaRepository.update(id, pessoaAtualizar);
+        PessoaEntity pessoaEntity = objectMapper.convertValue(pessoaCreateDTO, PessoaEntity.class);
+        PessoaEntity pessoaAtulizada = pessoaRepository.update(id, pessoaEntity);
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaAtulizada, PessoaDTO.class);
+        return pessoaDTO;
     }
 
     public void delete(Integer id) throws RegraDeNegocioException {
         pessoaRepository.delete(id);
     }
 
-    public List<Pessoa> listByName(String nome) {
-        return pessoaRepository.listByName(nome);
+    public List<PessoaDTO> listByName(String nome) {
+        return pessoaRepository.list().stream()
+                .filter(pessoaEntity -> pessoaEntity.getNome().toUpperCase().contains(nome.toUpperCase()))
+                .map(pessoaEntity -> objectMapper.convertValue(pessoaEntity, PessoaDTO.class))
+                .collect(Collectors.toList());
+
     }
 }
