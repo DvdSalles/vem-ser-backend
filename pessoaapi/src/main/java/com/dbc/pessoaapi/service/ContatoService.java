@@ -24,9 +24,8 @@ public class ContatoService {
     public ContatoDTO create(Integer idPessoa, ContatoCreateDTO contatoCreateDTO) throws RegraDeNegocioException {
         pessoaRepository.buscarPorId(idPessoa);
         ContatoEntity contatoEntity = objectMapper.convertValue(contatoCreateDTO, ContatoEntity.class);
-        ContatoEntity contatoCriado = objectMapper.convertValue(contatoEntity, ContatoEntity.class);
-        contatoCriado.setIdPessoa(idPessoa);
-        contatoRepository.create(contatoCriado);
+        contatoEntity.setIdPessoa(idPessoa);
+        ContatoEntity contatoCriado = contatoRepository.create(contatoEntity);
         ContatoDTO contatoDTO = objectMapper.convertValue(contatoCriado, ContatoDTO.class);
         return contatoDTO;
     }
@@ -38,8 +37,7 @@ public class ContatoService {
     }
 
     public List<ContatoDTO> listPorIdPessoa(Integer idPessoa) {
-        return contatoRepository.list().stream()
-                .filter(contatoEntity -> contatoEntity.getIdPessoa().equals(idPessoa))
+        return contatoRepository.listPorIdPessoa(idPessoa).stream()
                 .map(contatoEntity -> objectMapper.convertValue(contatoEntity, ContatoDTO.class))
                 .collect(Collectors.toList());
     }

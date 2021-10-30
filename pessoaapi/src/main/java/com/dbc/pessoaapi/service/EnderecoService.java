@@ -27,18 +27,15 @@ public class EnderecoService {
     }
 
     public List<EnderecoDTO> listEnderecoPorPessoa(Integer idPessoa) {
-        return enderecoRepository.list().stream()
-                .filter(enderecoEntity -> enderecoEntity.getIdPessoa().equals(idPessoa))
+        return enderecoRepository.listEnderecoPorPessoa(idPessoa).stream()
                 .map(enderecoEntity -> objectMapper.convertValue(enderecoEntity, EnderecoDTO.class))
                 .collect(Collectors.toList());
     }
 
     public EnderecoDTO listEnderecoPorId(Integer idEndereco) throws RegraDeNegocioException {
-        return enderecoRepository.list().stream()
-                .filter(enderecoEntity -> enderecoEntity.getIdEndereco().equals(idEndereco))
-                .findFirst()
-                .map(enderecoEntity -> objectMapper.convertValue(enderecoEntity, EnderecoDTO.class))
-                .orElseThrow(() -> new RegraDeNegocioException("Endereço não encontrado"));
+        EnderecoEntity enderecoEntity = enderecoRepository.listEnderecoPorId(idEndereco);
+        EnderecoDTO enderecoDTO = objectMapper.convertValue(enderecoEntity, EnderecoDTO.class);
+        return enderecoDTO;
     }
 
     public EnderecoDTO create(Integer idPessoa, EnderecoCreateDTO enderecoCreateDTO) throws RegraDeNegocioException {
