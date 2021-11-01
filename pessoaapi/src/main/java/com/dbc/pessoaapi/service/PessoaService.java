@@ -6,9 +6,12 @@ import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.PessoaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,9 +20,10 @@ import java.util.stream.Collectors;
 public class PessoaService {
     private final PessoaRepository pessoaRepository;
     private final ObjectMapper objectMapper;
+    private final EmailService emailService;
 
 
-    public PessoaDTO create(PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException {
+    public PessoaDTO create(PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
 //        if(StringUtils.isBlank(pessoa.getNome())) {
 //            throw new Exception("Nome não informado!");
 //        } else if(ObjectUtils.isEmpty(pessoa.getDataNascimento())) {
@@ -29,8 +33,9 @@ public class PessoaService {
 //        }
         PessoaEntity pessoaEntity = objectMapper.convertValue(pessoaCreateDTO, PessoaEntity.class);
         PessoaEntity pessoaCriada = pessoaRepository.create(pessoaEntity);
-
         PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaCriada, PessoaDTO.class);
+        emailService.enviarEmailComTemplate(pessoaDTO);
+
         return pessoaDTO;
     }
 
@@ -41,22 +46,19 @@ public class PessoaService {
     }
 
     public PessoaDTO update(Integer id,
-                               PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException {
-//        if(StringUtils.isBlank(pessoaAtualizar.getNome())) {
-//            throw new RegraDeNegocioException("Nome não informado!");
-//        } else if(ObjectUtils.isEmpty(pessoaAtualizar.getDataNascimento())) {
-//            throw new RegraDeNegocioException("Data de nascimento não informada!");
-//        }else if(StringUtils.isBlank(pessoaAtualizar.getCpf()) || StringUtils.length(pessoaAtualizar.getCpf()) != 11) {
-//            throw new RegraDeNegocioException("CPF não inserido corretamente.");
-//        }
+                               PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
         PessoaEntity pessoaEntity = objectMapper.convertValue(pessoaCreateDTO, PessoaEntity.class);
-        PessoaEntity pessoaAtulizada = pessoaRepository.update(id, pessoaEntity);
-        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaAtulizada, PessoaDTO.class);
+        PessoaEntity pessoaAtualizada = pessoaRepository.update(id, pessoaEntity);
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaAtualizada, PessoaDTO.class);
+        emailService.enviarEmailComTemplateUpdate(pessoaDTO);
         return pessoaDTO;
     }
 
-    public void delete(Integer id) throws RegraDeNegocioException {
+    public void delete(Integer id) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
+        PessoaEntity pessoaDeletada = pessoaRepository.buscarPorId(id);
         pessoaRepository.delete(id);
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaDeletada, PessoaDTO.class);
+        emailService.enviarEmailComTemplateDelete(pessoaDTO);
     }
 
     public List<PessoaDTO> listByName(String nome) {

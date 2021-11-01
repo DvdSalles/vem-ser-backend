@@ -5,13 +5,16 @@ import com.dbc.pessoaapi.dto.PessoaDTO;
 import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.service.PessoaService;
+import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -29,7 +32,7 @@ public class PessoaController {
     }
 
     @PostMapping
-    public PessoaDTO create(@RequestBody @Valid PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException {
+    public PessoaDTO create(@RequestBody @Valid PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
         log.info("Criando pessoa.");
         PessoaDTO pessoaDTO1 = pessoaService.create(pessoaCreateDTO);
         log.info("Pessoa criada com sucesso.");
@@ -49,7 +52,7 @@ public class PessoaController {
 
     @PutMapping("/{idPessoa}")
     public PessoaDTO update(@PathVariable("idPessoa") Integer id,
-                               @RequestBody @Valid PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException {
+                               @RequestBody @Valid PessoaCreateDTO pessoaCreateDTO) throws RegraDeNegocioException, MessagingException, TemplateException, IOException {
         log.info("Atualizando pessoa.");
         PessoaDTO pessoaDTO1 = pessoaService.update(id, pessoaCreateDTO);
         log.info("Pessoa atualizada com sucesso.");

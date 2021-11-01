@@ -14,17 +14,8 @@ import javax.validation.constraints.Size;
 public class ContatoEntity {
     private Integer idContato;
     private Integer idPessoa;
-
-    @NotNull
     private TipoContato tipoContato;
-
-    @NotEmpty
-    @NotNull
-    @Size(max = 13)
     private String numero;
-
-    @NotEmpty
-    @NotNull
     private String descricao;
 
 }
