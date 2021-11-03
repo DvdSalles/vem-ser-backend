@@ -7,32 +7,28 @@
 <body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-        <td align="center" valign="top" bgcolor="#838383"
+        <td align="center" valign="top" bgcolor="white"
             style="background-color: #838383;"><br><br>
             <table width="600" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td align="center" valign="top" bgcolor="#d3be6c"
-                        style="background-color: #d3be6c; font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #000000; padding: 0px 15px 10px 15px;">
+                        style="background-color: #491c75; font-family: AURW Chancery L, cursive; font-size: 16px; color: white; padding: 0px 0px 10px 0px;">
 
-                        <div style="font-size: 42px; color:grey;">
-                            <b>David Mail</b>
+                        <div style="font-size: 22px; color:white;">
+                            <img src="https://i.imgur.com/7VUunzI.png"></img><br><br>
+                            <b>Seja Bem Vindo!</b>
                         </div>
-
-                        <div style="font-size: 24px; color: #555100;">
-                            <br> Sending Email using Spring Boot with <b>FreeMarker
-                            template !!!</b> <br>
-                        </div>
-                        <div>
-                            <br>Olá ${nome},<br> <br>
-                             Estamos felizes em ter você em nosso sistema =) <br></br>
+                        <div style="color:white; text-color: white">
+                            <br><br>Olá ${nome},<br><br>
+                             Estamos felizes em ter você em nosso sistema. =) <br><br>
                             Seu cadastro foi realizado com sucesso, seu identificador é ${idPessoa}.<br><br>
-                            Qualquer dúvida é só contatar o suporte pelo e-mail ${emailRemetente}. <br><br><br><br>
-                            Att, <br><br>
-                            Sistema.
+                            Qualquer dúvida é só contatar o suporte pelo e-mail ${emailRemetente}. <br><br>
+                            Att, <br>
+                            Suporte.
                         </div>
                     </td>
                 </tr>
-            </table> <br> <br></td>
+            </table> <br><br></td>
     </tr>
 </table>
 </body>
