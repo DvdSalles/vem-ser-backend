@@ -108,7 +108,7 @@ public class EnderecoController {
 
     @GetMapping("/endereco-por-pais")
     public List<EnderecoEntity> listarEnderecosPorPais(@RequestParam String pais) {
-        return enderecoRepository.procurarPorPais(pais.toUpperCase(Locale.ROOT));
+        return enderecoRepository.procurarPorPais(pais);
     }
 
     @GetMapping("/endereco-por-idpesssoa")
@@ -117,8 +117,9 @@ public class EnderecoController {
     }
 
     @GetMapping("/endereco-cidade-ou-pais")
-    public List<EnderecoEntity> enderecoPorCidadeOuPais(@RequestParam String paisCidade) {
-        return enderecoRepository.enderecoPorCidadeOuPais(paisCidade.toUpperCase(Locale.ROOT));
+    public List<EnderecoEntity> enderecoPorCidadeOuPais(@RequestParam(value = "cidade", required = false) String cidade,
+                                                        @RequestParam(value = "pais", required = false) String pais) {
+        return enderecoRepository.enderecoPorCidadeOuPais(cidade, pais);
     }
 
     @GetMapping("/endereco-sem-complemento")

@@ -82,17 +82,16 @@ public class PessoaService {
                 .collect(Collectors.toList());
     }
 
-    public List<PessoaComContatoDTO> listarPessoaComContatoComOuSemId(Integer idPessoa) {
+    public List<PessoaComContatoDTO> listarPessoaComContatoComOuSemId(Integer idPessoa) throws RegraDeNegocioException {
         if (idPessoa != null) {
-            return pessoaRepository.findAll().stream()
-                    .filter(pessoaEntity -> pessoaEntity.getIdPessoa().equals(idPessoa))
-                    .map(pessoaEntity -> {
-                        PessoaComContatoDTO dto1 = objectMapper.convertValue(pessoaEntity, PessoaComContatoDTO.class);
-                        dto1.setContatos(pessoaEntity.getContatos().stream()
-                                .map(contatoEntity -> objectMapper.convertValue(contatoEntity, ContatoDTO.class))
-                                .collect(Collectors.toList()));
-                        return dto1;
-                    }).collect(Collectors.toList());
+            List<PessoaComContatoDTO> lista = new ArrayList<>();
+            PessoaEntity pessoa = pessoaRepository.findById(idPessoa).orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada."));
+            PessoaComContatoDTO dto = objectMapper.convertValue(pessoa, PessoaComContatoDTO.class);
+            dto.setContatos(pessoa.getContatos().stream()
+                    .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
+                    .collect(Collectors.toList()));
+            lista.add(dto);
+            return lista;
         } else {
             return pessoaRepository.findAll().stream()
                     .map(pessoaEntity -> {
@@ -107,17 +106,16 @@ public class PessoaService {
         }
     }
 
-    public List<PessoaComEnderecoDTO> listarPessoaComEnderecoComOuSemId(Integer idPessoa) {
+    public List<PessoaComEnderecoDTO> listarPessoaComEnderecoComOuSemId(Integer idPessoa) throws RegraDeNegocioException {
         if (idPessoa != null) {
-            return pessoaRepository.findAll().stream()
-                    .filter(pessoaEntity -> pessoaEntity.getIdPessoa().equals(idPessoa))
-                    .map(pessoaEntity -> {
-                        PessoaComEnderecoDTO dto1 = objectMapper.convertValue(pessoaEntity, PessoaComEnderecoDTO.class);
-                        dto1.setEnderecos(pessoaEntity.getEnderecos().stream()
-                                .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
-                                .collect(Collectors.toList()));
-                        return dto1;
-                    }).collect(Collectors.toList());
+            List<PessoaComEnderecoDTO> lista = new ArrayList<>();
+            PessoaEntity pessoa = pessoaRepository.findById(idPessoa).orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada."));
+            PessoaComEnderecoDTO dto = objectMapper.convertValue(pessoa, PessoaComEnderecoDTO.class);
+            dto.setEnderecos(pessoa.getEnderecos().stream()
+                    .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
+                    .collect(Collectors.toList()));
+            lista.add(dto);
+            return lista;
         } else {
             return pessoaRepository.findAll().stream()
                     .map(pessoaEntity -> {
@@ -131,20 +129,19 @@ public class PessoaService {
                     .collect(Collectors.toList());
         }
     }
-    public List<PessoaContatoEnderecoDTO> listarPessoaComContatoEnderecoComOuSemId(Integer idPessoa) {
+    public List<PessoaContatoEnderecoDTO> listarPessoaComContatoEnderecoComOuSemId(Integer idPessoa) throws RegraDeNegocioException {
         if (idPessoa != null) {
-            return pessoaRepository.findAll().stream()
-                    .filter(pessoaEntity -> pessoaEntity.getIdPessoa().equals(idPessoa))
-                    .map(pessoaEntity -> {
-                        PessoaContatoEnderecoDTO dto1 = objectMapper.convertValue(pessoaEntity, PessoaContatoEnderecoDTO.class);
-                        dto1.setContatos(pessoaEntity.getContatos().stream()
-                                .map(contatoEntity -> objectMapper.convertValue(contatoEntity, ContatoDTO.class))
-                                .collect(Collectors.toList()));
-                        dto1.setEnderecos(pessoaEntity.getEnderecos().stream()
-                                .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
-                                .collect(Collectors.toList()));
-                        return dto1;
-                    }).collect(Collectors.toList());
+            List<PessoaContatoEnderecoDTO> lista = new ArrayList<>();
+            PessoaEntity pessoa = pessoaRepository.findById(idPessoa).orElseThrow(() -> new RegraDeNegocioException("Pessoa não encontrada."));
+            PessoaContatoEnderecoDTO dto = objectMapper.convertValue(pessoa, PessoaContatoEnderecoDTO.class);
+            dto.setEnderecos(pessoa.getEnderecos().stream()
+                    .map(endereco -> objectMapper.convertValue(endereco, EnderecoDTO.class))
+                    .collect(Collectors.toList()));
+            dto.setContatos(pessoa.getContatos().stream()
+                    .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
+                    .collect(Collectors.toList()));
+            lista.add(dto);
+            return lista;
         } else {
             return pessoaRepository.findAll().stream()
                     .map(pessoaEntity -> {

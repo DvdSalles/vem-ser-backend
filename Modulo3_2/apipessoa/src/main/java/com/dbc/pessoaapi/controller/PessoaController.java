@@ -124,17 +124,17 @@ public class PessoaController {
     }
 
     @GetMapping("/buscar-pessoa+contato")
-    public List<PessoaComContatoDTO> listarPessoaComContatoComOuSemId(@RequestParam(value = "idPessoa", required = false) Integer idPessoa) {
+    public List<PessoaComContatoDTO> listarPessoaComContatoComOuSemId(@RequestParam(value = "idPessoa", required = false) Integer idPessoa) throws RegraDeNegocioException {
         return pessoaService.listarPessoaComContatoComOuSemId(idPessoa);
     }
 
     @GetMapping("/buscar-pessoa+endereco")
-    public List<PessoaComEnderecoDTO> listarPessoaComEnderecoComOuSemId(@RequestParam(value = "idPessoa", required = false) Integer idPessoa) {
+    public List<PessoaComEnderecoDTO> listarPessoaComEnderecoComOuSemId(@RequestParam(value = "idPessoa", required = false) Integer idPessoa) throws RegraDeNegocioException {
         return pessoaService.listarPessoaComEnderecoComOuSemId(idPessoa);
     }
 
     @GetMapping("/buscar-pessoa+contato+endereco")
-    public List<PessoaContatoEnderecoDTO> listarPessoaComContatoEnderecoComOuSemId(@RequestParam(value = "idPessoa", required = false) Integer idPessoa) {
+    public List<PessoaContatoEnderecoDTO> listarPessoaComContatoEnderecoComOuSemId(@RequestParam(value = "idPessoa", required = false) Integer idPessoa) throws RegraDeNegocioException {
         return pessoaService.listarPessoaComContatoEnderecoComOuSemId(idPessoa);
     }
 
