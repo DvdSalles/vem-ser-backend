@@ -1,0 +1,13 @@
+CREATE TABLE USUARIO(
+    ID_USUARIO numeric NOT NULL,
+    LOGIN text UNIQUE NOT NULL,
+    SENHA text NOT NULL,
+    PRIMARY KEY(ID_USUARIO)
+);
+
+CREATE SEQUENCE seq_usuario
+ START WITH     1
+ INCREMENT BY   1
+
+insert into usuario (id_usuario, login, senha)
+     values (nextval('seq_usuario'), 'David', 'D@avid');
