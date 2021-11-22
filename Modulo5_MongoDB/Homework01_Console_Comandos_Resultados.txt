@@ -1,0 +1,89 @@
+db.jogos.insertOne({
+    nome: "Green Hell",
+    genero: "Sobrevivência",
+    plataforma: "PC",
+    preço: "R$ 33,50"
+})
+{
+    acknowledged: true,
+        insertedId: ObjectId("619c01a8ac17abab0e369c20")
+}
+db.jogos.insertMany([{
+    nome: "Worms W.M.D",
+    genero: "Estratégia",
+    plataforma: "PC e Console",
+    preço: "R$ 79,90"
+},
+{
+    nome: "Worms Revolution",
+    genero: "Estratégia",
+    plataforma: "PC e Console",
+    preço: "R$ 27,99"
+},
+{
+    nome: "Worms Armageddon",
+    genero: "Estratégia",
+    plataforma: "PC e Console",
+    preço: "R$ 27,99"
+}])
+{
+    acknowledged: true,
+        insertedIds:
+    {
+        '0': ObjectId("619c0348ac17abab0e369c21"),
+            '1': ObjectId("619c0348ac17abab0e369c22"),
+                '2': ObjectId("619c0348ac17abab0e369c23")
+    }
+}
+db.jogos.find()
+{
+    _id: ObjectId("619c01a8ac17abab0e369c20"),
+        nome: 'Green Hell',
+            genero: 'Sobrevivência',
+                plataforma: 'PC',
+                    'preço': 'R$ 33,50'
+}
+{
+    _id: ObjectId("619c0348ac17abab0e369c21"),
+        nome: 'Worms W.M.D',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 79,90'
+}
+{
+    _id: ObjectId("619c0348ac17abab0e369c22"),
+        nome: 'Worms Revolution',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 27,99'
+}
+{
+    _id: ObjectId("619c0348ac17abab0e369c23"),
+        nome: 'Worms Armageddon',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 27,99'
+}
+
+db.jogos.insertOne({
+    nome: "Sea of Thieves",
+    genero: "Aventura",
+    plataforma: "PC e Console",
+    preço: "R$ 89,90"
+})
+{
+    acknowledged: true,
+        insertedId: ObjectId("619c0490ac17abab0e369c24")
+}
+db.jogos.findOne({ nome: "Green" })
+null
+db.jogos.findOne({ nome: "Green Hell" })
+{
+    _id: ObjectId("619c01a8ac17abab0e369c20"),
+        nome: 'Green Hell',
+            genero: 'Sobrevivência',
+                plataforma: 'PC',
+                    'preço': 'R$ 33,50'
+}
+db.jogos.deleteOne({ nome: "Green Hell" })
+{ acknowledged: true, deletedCount: 1 }
