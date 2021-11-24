@@ -87,3 +87,106 @@ db.jogos.findOne({ nome: "Green Hell" })
 }
 db.jogos.deleteOne({ nome: "Green Hell" })
 { acknowledged: true, deletedCount: 1 }
+
+---------------------------------- AULA 02 -------------------------------------
+db.jogos.find(
+    { nome: /[w W]or/ }
+)
+{
+    _id: ObjectId("619c0348ac17abab0e369c21"),
+        nome: 'Worms W.M.D',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 79,90'
+}
+{
+    _id: ObjectId("619c0348ac17abab0e369c22"),
+        nome: 'Worms Revolution',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 27,99'
+}
+{
+    _id: ObjectId("619c0348ac17abab0e369c23"),
+        nome: 'Worms Armageddon',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 27,99'
+}
+db.jogos.find(
+    { nome: /o/ }
+)
+{
+    _id: ObjectId("619c0348ac17abab0e369c21"),
+        nome: 'Worms W.M.D',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 79,90'
+}
+{
+    _id: ObjectId("619c0348ac17abab0e369c22"),
+        nome: 'Worms Revolution',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 27,99'
+}
+{
+    _id: ObjectId("619c0348ac17abab0e369c23"),
+        nome: 'Worms Armageddon',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 27,99'
+}
+{
+    _id: ObjectId("619c0490ac17abab0e369c24"),
+        nome: 'Sea of Thieves',
+            genero: 'Aventura',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 89,90'
+}
+db.jogos.updateOne(
+    { nome: "Worms Revolution" },
+    {
+        $set: { "nome": "Worms Revo", "preço": 20.99 }
+    }
+)
+{
+    acknowledged: true,
+        insertedId: null,
+            matchedCount: 1,
+                modifiedCount: 1,
+                    upsertedCount: 0
+}
+db.jogos.find(
+    { nome: /Revo/ }
+)
+{
+    _id: ObjectId("619c0348ac17abab0e369c22"),
+        nome: 'Worms Revo',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 20.99
+}
+db.jogos.updateOne(
+    { nome: "Worms Revo" },
+    {
+        $set: { "nome": "Worms Revolution", "preço": "R$ 20.99" }
+    }
+)
+{
+    acknowledged: true,
+        insertedId: null,
+            matchedCount: 1,
+                modifiedCount: 1,
+                    upsertedCount: 0
+}
+db.jogos.find(
+    { nome: /Revo/ }
+)
+{
+    _id: ObjectId("619c0348ac17abab0e369c22"),
+        nome: 'Worms Revolution',
+            genero: 'Estratégia',
+                plataforma: 'PC e Console',
+                    'preço': 'R$ 20.99'
+}

@@ -30,3 +30,14 @@ db.jogos.insertOne({
     plataforma: "PC e Console",
     preço: "R$ 89,90"
 })
+
+db.jogos.find(
+    { nome: /[w W]or/ }
+)
+
+db.jogos.updateOne(
+    { nome: "Worms Revolution" },
+    {
+        $set: { "nome": "Worms Revo", "preço": 20.99 }
+    }
+)

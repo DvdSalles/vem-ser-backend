@@ -1,0 +1,612 @@
+
+db.clientes.insertMany([
+    {
+        "id_cliente": 10,
+        "nome": "Fulano da Silva",
+        "telefone": "61998998899",
+        "email": "fulano@gmail.com",
+        "status_cliente": "0",
+        "tipo_cliente": "0",
+        "pontos_fidelidade": 0
+    },
+    {
+        "id_cliente": 9,
+        "nome": "Bianca Marostica",
+        "telefone": "519813251654",
+        "email": "bianca.marostica@dbccompany.com.br",
+        "status_cliente": "0",
+        "tipo_cliente": "1",
+        "pontos_fidelidade": 510
+    },
+    {
+        "id_cliente": 2,
+        "nome": "Camile Lopes",
+        "telefone": "51935486546",
+        "email": "camilelopes.oliveira@gmail.com",
+        "status_cliente": "0",
+        "tipo_cliente": "1",
+        "pontos_fidelidade": 500
+    },
+    {
+        "id_cliente": 3,
+        "nome": "David Salles",
+        "telefone": "61995579969",
+        "email": "davizaooo23@gmail.com",
+        "status_cliente": "0",
+        "tipo_cliente": "1",
+        "pontos_fidelidade": 1010
+    }
+])
+{
+    acknowledged: true,
+        insertedIds:
+    {
+        '0': ObjectId("619d456e7209e44a226cf29c"),
+            '1': ObjectId("619d456e7209e44a226cf29d"),
+                '2': ObjectId("619d456e7209e44a226cf29e"),
+                    '3': ObjectId("619d456e7209e44a226cf29f")
+    }
+}
+db.livros.insertMany([
+    {
+        "id_livro": 12,
+        "titulo": "Todas as Mãos Reveladas",
+        "autor": "Gus Hansen",
+        "editora": "Raise Editora",
+        "nr_paginas": 373,
+        "formato": "0",
+        "idioma": "0",
+        "status_livro": "0"
+    },
+    {
+        "id_livro": 14,
+        "titulo": "52 dicas para No-limit Texas Hold'em",
+        "autor": "Barry Shulman",
+        "editora": "Raise Editora",
+        "nr_paginas": 143,
+        "formato": "0",
+        "idioma": "0",
+        "status_livro": "0"
+    },
+    {
+        "id_livro": 11,
+        "titulo": "Battle Royale",
+        "autor": "Koushun Takami",
+        "editora": "Globo Livros",
+        "nr_paginas": 420,
+        "formato": "0",
+        "idioma": "0",
+        "status_livro": "0"
+    },
+    {
+        "id_livro": 15,
+        "titulo": "O Livro Verde do Pôquer",
+        "autor": "Phil Gordon",
+        "editora": "Marco Zero",
+        "nr_paginas": 218,
+        "formato": "0",
+        "idioma": "0",
+        "status_livro": "0"
+    },
+    {
+        "id_livro": 1,
+        "titulo": "Harry Potter e a Pedra Filosofal",
+        "autor": "J.K. Rowling",
+        "editora": "Rocco",
+        "nr_paginas": 223,
+        "formato": "1",
+        "idioma": "1",
+        "status_livro": "0"
+    },
+    {
+        "id_livro": 3,
+        "titulo": "Harry Potter e o Prisioneiro de Azkaban",
+        "autor": "J.K. Rowling",
+        "editora": "Rocco",
+        "nr_paginas": 317,
+        "formato": "1",
+        "idioma": "1",
+        "status_livro": "1"
+    },
+    {
+        "id_livro": 2,
+        "titulo": "Harry Potter e a Camâra Secreta",
+        "autor": "J.K. Rowling",
+        "editora": "Rocco",
+        "nr_paginas": 251,
+        "formato": "1",
+        "idioma": "1",
+        "status_livro": "0"
+    },
+    {
+        "id_livro": 16,
+        "titulo": "Aquele Livro",
+        "autor": "Fulano de Tal",
+        "editora": "Globo",
+        "nr_paginas": 500,
+        "formato": "0",
+        "idioma": "0",
+        "status_livro": "0"
+    },
+    {
+        "id_livro": 13,
+        "titulo": "Harrington no Hold'em Volume 1 - Jogo Estratégico",
+        "autor": "Dan Harrington",
+        "editora": "Raise Editora",
+        "nr_paginas": 376,
+        "formato": "0",
+        "idioma": "0",
+        "status_livro": "1"
+    },
+    {
+        "id_livro": 4,
+        "titulo": "Harry Potter e o Cálice de Fogo",
+        "autor": "J.K. Rowling",
+        "editora": "Rocco",
+        "nr_paginas": 636,
+        "formato": "1",
+        "idioma": "1",
+        "status_livro": "0"
+    },
+    {
+        "id_livro": 5,
+        "titulo": "Harry Potter e a Ordem Da Fênix",
+        "autor": "J.K. Rowling",
+        "editora": "Rocco",
+        "nr_paginas": 766,
+        "formato": "1",
+        "idioma": "1",
+        "status_livro": "0"
+    },
+    {
+        "id_livro": 6,
+        "titulo": "Harry Potter e o Enigma do principe",
+        "autor": "J.K. Rowling",
+        "editora": "Rocco",
+        "nr_paginas": 471,
+        "formato": "1",
+        "idioma": "1",
+        "status_livro": "0"
+    },
+    {
+        "id_livro": 7,
+        "titulo": "Harry Potter e as Relíquias da Morte",
+        "autor": "J.K. Rowling",
+        "editora": "Rocco",
+        "nr_paginas": 551,
+        "formato": "1",
+        "idioma": "1",
+        "status_livro": "0"
+    }
+])
+{
+    acknowledged: true,
+        insertedIds:
+    {
+        '0': ObjectId("619d462f7209e44a226cf2a0"),
+            '1': ObjectId("619d462f7209e44a226cf2a1"),
+                '2': ObjectId("619d462f7209e44a226cf2a2"),
+                    '3': ObjectId("619d462f7209e44a226cf2a3"),
+                        '4': ObjectId("619d462f7209e44a226cf2a4"),
+                            '5': ObjectId("619d462f7209e44a226cf2a5"),
+                                '6': ObjectId("619d462f7209e44a226cf2a6"),
+                                    '7': ObjectId("619d462f7209e44a226cf2a7"),
+                                        '8': ObjectId("619d462f7209e44a226cf2a8"),
+                                            '9': ObjectId("619d462f7209e44a226cf2a9"),
+                                                '10': ObjectId("619d462f7209e44a226cf2aa"),
+                                                    '11': ObjectId("619d462f7209e44a226cf2ab"),
+                                                        '12': ObjectId("619d462f7209e44a226cf2ac")
+    }
+}
+
+
+db.clientes.find({})
+{
+    _id: ObjectId("619d456e7209e44a226cf29c"),
+        id_cliente: 10,
+            nome: 'Fulano da Silva',
+                telefone: '61998998899',
+                    email: 'fulano@gmail.com',
+                        status_cliente: '0',
+                            tipo_cliente: '0',
+                                pontos_fidelidade: 0
+}
+{
+    _id: ObjectId("619d456e7209e44a226cf29d"),
+        id_cliente: 9,
+            nome: 'Bianca Marostica',
+                telefone: '519813251654',
+                    email: 'bianca.marostica@dbccompany.com.br',
+                        status_cliente: '0',
+                            tipo_cliente: '1',
+                                pontos_fidelidade: 510
+}
+{
+    _id: ObjectId("619d456e7209e44a226cf29e"),
+        id_cliente: 2,
+            nome: 'Camile Lopes',
+                telefone: '51935486546',
+                    email: 'camilelopes.oliveira@gmail.com',
+                        status_cliente: '0',
+                            tipo_cliente: '1',
+                                pontos_fidelidade: 500
+}
+{
+    _id: ObjectId("619d456e7209e44a226cf29f"),
+        id_cliente: 3,
+            nome: 'David Salles',
+                telefone: '61995579969',
+                    email: 'davizaooo23@gmail.com',
+                        status_cliente: '0',
+                            tipo_cliente: '1',
+                                pontos_fidelidade: 1010
+}
+db.clientes.find({ "nome": /[D d]av/ })
+{
+    _id: ObjectId("619d456e7209e44a226cf29f"),
+        id_cliente: 3,
+            nome: 'David Salles',
+                telefone: '61995579969',
+                    email: 'davizaooo23@gmail.com',
+                        status_cliente: '0',
+                            tipo_cliente: '1',
+                                pontos_fidelidade: 1010
+}
+db.clientes.find({ "nome": /all/ })
+{
+    _id: ObjectId("619d456e7209e44a226cf29f"),
+        id_cliente: 3,
+            nome: 'David Salles',
+                telefone: '61995579969',
+                    email: 'davizaooo23@gmail.com',
+                        status_cliente: '0',
+                            tipo_cliente: '1',
+                                pontos_fidelidade: 1010
+}
+db.clientes.updateOne({ "name": /David/ },
+    {
+        $set: {
+            "nome": "David Salles", "email": "david.salles@dbccompany.com.br"
+        }
+    })
+{
+    acknowledged: true,
+        insertedId: null,
+            matchedCount: 0,
+                modifiedCount: 0,
+                    upsertedCount: 0
+}
+db.clientes.find({ "nome": /all/ })
+{
+    _id: ObjectId("619d456e7209e44a226cf29f"),
+        id_cliente: 3,
+            nome: 'David Salles',
+                telefone: '61995579969',
+                    email: 'davizaooo23@gmail.com',
+                        status_cliente: '0',
+                            tipo_cliente: '1',
+                                pontos_fidelidade: 1010
+}
+db.clientes.find({
+    pontos_fidelidade: { $gt: 100 }
+})
+{
+    _id: ObjectId("619d456e7209e44a226cf29d"),
+        id_cliente: 9,
+            nome: 'Bianca Marostica',
+                telefone: '519813251654',
+                    email: 'bianca.marostica@dbccompany.com.br',
+                        status_cliente: '0',
+                            tipo_cliente: '1',
+                                pontos_fidelidade: 510
+}
+{
+    _id: ObjectId("619d456e7209e44a226cf29e"),
+        id_cliente: 2,
+            nome: 'Camile Lopes',
+                telefone: '51935486546',
+                    email: 'camilelopes.oliveira@gmail.com',
+                        status_cliente: '0',
+                            tipo_cliente: '1',
+                                pontos_fidelidade: 500
+}
+{
+    _id: ObjectId("619d456e7209e44a226cf29f"),
+        id_cliente: 3,
+            nome: 'David Salles',
+                telefone: '61995579969',
+                    email: 'davizaooo23@gmail.com',
+                        status_cliente: '0',
+                            tipo_cliente: '1',
+                                pontos_fidelidade: 1010
+}
+
+db.livros.find({
+    $or: [
+        { "titulo": /dicas/ }, { "titulo": /Harry/ }
+    ]
+})
+{
+    _id: ObjectId("619d462f7209e44a226cf2a1"),
+        id_livro: 14,
+            titulo: '52 dicas para No-limit Texas Hold\'em',
+                autor: 'Barry Shulman',
+                    editora: 'Raise Editora',
+                        nr_paginas: 143,
+                            formato: '0',
+                                idioma: '0',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a4"),
+        id_livro: 1,
+            titulo: 'Harry Potter e a Pedra Filosofal',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 223,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a5"),
+        id_livro: 3,
+            titulo: 'Harry Potter e o Prisioneiro de Azkaban',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 317,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '1'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a6"),
+        id_livro: 2,
+            titulo: 'Harry Potter e a Camâra Secreta',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 251,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a9"),
+        id_livro: 4,
+            titulo: 'Harry Potter e o Cálice de Fogo',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 636,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2aa"),
+        id_livro: 5,
+            titulo: 'Harry Potter e a Ordem Da Fênix',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 766,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2ab"),
+        id_livro: 6,
+            titulo: 'Harry Potter e o Enigma do principe',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 471,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2ac"),
+        id_livro: 7,
+            titulo: 'Harry Potter e as Relíquias da Morte',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 551,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+db.livros.find({
+    $or: [
+        { "titulo": /dicas/ }, { "titulo": /Harry/ }, { "nr_paginas": { $gt: 400 } }
+    ]
+})
+{
+    _id: ObjectId("619d462f7209e44a226cf2a1"),
+        id_livro: 14,
+            titulo: '52 dicas para No-limit Texas Hold\'em',
+                autor: 'Barry Shulman',
+                    editora: 'Raise Editora',
+                        nr_paginas: 143,
+                            formato: '0',
+                                idioma: '0',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a2"),
+        id_livro: 11,
+            titulo: 'Battle Royale',
+                autor: 'Koushun Takami',
+                    editora: 'Globo Livros',
+                        nr_paginas: 420,
+                            formato: '0',
+                                idioma: '0',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a4"),
+        id_livro: 1,
+            titulo: 'Harry Potter e a Pedra Filosofal',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 223,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a5"),
+        id_livro: 3,
+            titulo: 'Harry Potter e o Prisioneiro de Azkaban',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 317,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '1'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a6"),
+        id_livro: 2,
+            titulo: 'Harry Potter e a Camâra Secreta',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 251,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a7"),
+        id_livro: 16,
+            titulo: 'Aquele Livro',
+                autor: 'Fulano de Tal',
+                    editora: 'Globo',
+                        nr_paginas: 500,
+                            formato: '0',
+                                idioma: '0',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a9"),
+        id_livro: 4,
+            titulo: 'Harry Potter e o Cálice de Fogo',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 636,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2aa"),
+        id_livro: 5,
+            titulo: 'Harry Potter e a Ordem Da Fênix',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 766,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2ab"),
+        id_livro: 6,
+            titulo: 'Harry Potter e o Enigma do principe',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 471,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2ac"),
+        id_livro: 7,
+            titulo: 'Harry Potter e as Relíquias da Morte',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 551,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+
+db.livros.find(
+    { "titulo": { $in: [/Harry/, /Potter/] } }
+)
+{
+    _id: ObjectId("619d462f7209e44a226cf2a4"),
+        id_livro: 1,
+            titulo: 'Harry Potter e a Pedra Filosofal',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 223,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a5"),
+        id_livro: 3,
+            titulo: 'Harry Potter e o Prisioneiro de Azkaban',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 317,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '1'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a6"),
+        id_livro: 2,
+            titulo: 'Harry Potter e a Camâra Secreta',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 251,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2a9"),
+        id_livro: 4,
+            titulo: 'Harry Potter e o Cálice de Fogo',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 636,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2aa"),
+        id_livro: 5,
+            titulo: 'Harry Potter e a Ordem Da Fênix',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 766,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2ab"),
+        id_livro: 6,
+            titulo: 'Harry Potter e o Enigma do principe',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 471,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
+{
+    _id: ObjectId("619d462f7209e44a226cf2ac"),
+        id_livro: 7,
+            titulo: 'Harry Potter e as Relíquias da Morte',
+                autor: 'J.K. Rowling',
+                    editora: 'Rocco',
+                        nr_paginas: 551,
+                            formato: '1',
+                                idioma: '1',
+                                    status_livro: '0'
+}
