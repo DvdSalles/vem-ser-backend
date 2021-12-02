@@ -29,4 +29,7 @@ public interface PessoaRepository extends JpaRepository<PessoaEntity,Integer> {
     @Query(value = "SELECT * FROM VEM_SER.PESSOA p LEFT JOIN VEM_SER.PESSOA_X_PESSOA_ENDERECO pe ON (p.ID_PESSOA = pe.ID_PESSOA) " +
             " WHERE pe.ID_PESSOA IS NULL", nativeQuery = true)
     List<PessoaEntity> buscarPessoasComEnderecoNull();
+
+    @Query(value = "SELECT * FROM VEM_SER.PESSOA p WHERE TO_CHAR(p.DATA_NASCIMENTO, 'DD/MM') = :data", nativeQuery = true)
+    List<PessoaEntity> findAniversario(String data);
 }

@@ -187,13 +187,11 @@ public class PessoaService {
 
     @Scheduled(cron = "0 0 8 * * *")
     public void mandarEmailAniversário() {
-        List<PessoaEntity> lista = pessoaRepository.findAll();
+        String data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM"));
+        List<PessoaEntity> lista = pessoaRepository.findAniversario(data);
         lista.forEach(pessoaEntity -> {
             try {
-                if(pessoaEntity.getDataNascimento().format(DateTimeFormatter.ofPattern("dd/MM"))
-                        .equals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM")))) {
-                    emailService.enviarEmailComTemplateScheduleAniversario(pessoaEntity);
-                }
+                emailService.enviarEmailComTemplateScheduleAniversario(pessoaEntity);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -225,13 +223,13 @@ public class PessoaService {
 
     @Scheduled(cron = "0 0 8 * * *")
     public void mandarEmailAniversárioKafka() {
-        List<PessoaEntity> lista = pessoaRepository.findAll();
+        String data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM"));
+        List<PessoaEntity> lista = pessoaRepository.findAniversario(data);
         lista.forEach(pessoaEntity -> {
             try {
-                if(pessoaEntity.getDataNascimento().format(DateTimeFormatter.ofPattern("dd/MM"))
-                        .equals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM")))) {
-                    producer.sendMessageDTO(emailService.enviarEmailComTemplateScheduleAniversarioKafka(pessoaEntity));
-                }
+
+                producer.sendMessageDTO(emailService.enviarEmailComTemplateScheduleAniversarioKafka(pessoaEntity));
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -171,7 +171,7 @@ public class EmailService {
                 "Selecionamos algumas das nossas super promoções de natal na nossa plataforma especialmente para você. =) <br><br>\n" +
                 " - Na compra de 1 CD do Chitãozinho e Xororó, ganhe 1 do Milionário e José Rico.<br><br>\n " +
                 "!!!Promoção especial para quem cantar a música 'Alô' no caixa, <br><br>" +
-                " LEVA DE BRINDE UM POSTER DO XITÃOZINHO E XORORÓ!!! " +
+                " LEVA DE BRINDE UM POSTER DO XITÃOZINHO E XORORÓ!!! <br><br>" +
                 " - Na locação de um filme VHS, a outra locação é grátis.<br><br>\n" +
                 " - Fita de Super Nitendo com 50% de desconto.<br><br>\n" +
                 " Aproveite!");
